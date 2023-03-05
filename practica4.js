@@ -54,7 +54,8 @@ exports.average_temp = (cities) =>{
   let TotalCiudades = cities.length;
   let InicialAcumulador=0;
   let SumaTemperaturas =cities.reduce((SumaAcumulada, city) =>{
-    return SumaAcumulada =+ cities.main.temp;
+    let temp_aux=cities.main.temp;
+    return SumaAcumulada =+ temp_aux;
   }, InicialAcumulador);
   return SumaTemperaturas/TotalCiudades;
 };
@@ -68,3 +69,29 @@ exports.warmer_average_temp =(cities) =>{
   });
    return TempMasCalientes;
 };
+
+exports.max_latitud =(cities)=>{
+  let Latitud_max=cities[0].coord.lat;
+  cities.forEach((city)=>{
+    let LatitudAuxiliar=cities.coord.lat
+    if(LatitudAuxiliar>Latitud_max){
+    Latitud_max=LatitudAuxiliar;
+    }
+  });
+  return Latitud_max;
+}
+
+exports.min_latitud =(cities)=>{
+  let Latitud_min=cities[0].coord.lat;
+  cities.forEach((city)=>{
+    let LatitudAuxiliar=cities.coord.lat
+    if(LatitudAuxiliar<Latitud_min){
+    Latitud_min=LatitudAuxiliar;
+    }
+  });
+  return Latitud_min;
+}
+
+exports.max_north = (cities) =>{
+   let LatitudMaxima = max_latitud(cities);
+}
