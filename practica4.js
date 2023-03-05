@@ -7,12 +7,12 @@ function load(citiesFilename){
 
 
 function max_temp(cities){
- let temp1;
+ let temp1 =cities.temp;
  let temp_max;
  let tamaño_cities=cities.length;
  for (let i=0;i<tamaño_cities;i++){
-   if(cities[i]>temp1){
-    cities[i]=temp1;
+   if(cities.temp[i]>temp1){
+    cities.temp[i]=temp1;
     temp_max=temp1;
     console.log(temp_max);
    }
