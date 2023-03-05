@@ -2,7 +2,10 @@
 //author: Nerio Messino
 
 
-
+exports.load = async filename => {
+  const buf = await readFile(filename);
+  return JSON.parse(buf);
+}
 
 exports.max_temp = (cities) =>{
  let temp_max=cities[0].main.temp;
