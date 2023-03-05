@@ -6,7 +6,7 @@ function load(citiesFilename){
 }
 
 
-function max_temp(cities){
+exports.max_temp = (cities) =>{
  let temp1 =cities.temp;
  let temp_max;
  let tamaño_cities=cities.length;
@@ -19,4 +19,20 @@ function max_temp(cities){
    return temp_max;
  }
  return;
+}
+
+exports.min_temp = (cities) =>{
+  let temp_aux =cities.temp;
+ let temp_min;
+ let tamaño_cities=cities.length;
+ for (let i=0;i<tamaño_cities;i++){
+   if(cities.temp[i]<temp_aux){
+    cities.temp[i]=temp_aux;
+    temp_min=temp_aux;
+    console.log(temp_min);
+   }
+   return temp_min;
+ }
+ return;
+
 }
