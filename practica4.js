@@ -7,32 +7,29 @@ function load(citiesFilename){
 
 
 exports.max_temp = (cities) =>{
- let temp1 =cities.temp;
- let temp_max;
+ let temp_max=cities[0].main.temp;
  let tamaño_cities=cities.length;
- for (let i=0;i<tamaño_cities;i++){
-   if(cities.temp[i]>temp1){
-    cities.temp[i]=temp1;
-    temp_max=temp1;
-    console.log(temp_max);
+ for (let i=1;i<tamaño_cities;i++){
+  let temp_aux=city.main.temp; 
+  if(temp_aux>temp_max){
+     temp_max=temp_aux;
+     console.log(temp_max);
    }
-   return temp_max;
+  
  }
- return;
+ return temp_max;
 }
 
 exports.min_temp = (cities) =>{
-  let temp_aux =cities.temp;
- let temp_min;
- let tamaño_cities=cities.length;
- for (let i=0;i<tamaño_cities;i++){
-   if(cities.temp[i]<temp_aux){
-    cities.temp[i]=temp_aux;
-    temp_min=temp_aux;
-    console.log(temp_min);
-   }
+  let temp_min =cities[0].main.temp;
+ 
+   cities.forEach((city) => {
+    let temp_aux=city.main.temp;
+    if(temp_aux < temp_min){
+      temp_min=temp_aux;
+    }
+   });
+   
    return temp_min;
- }
- return;
 
 }
