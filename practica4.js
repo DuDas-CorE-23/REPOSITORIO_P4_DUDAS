@@ -126,8 +126,8 @@ exports.gravity_center = (cities) =>{
     return SumaAcumuladaLat =+ latitud ;
   }, InicialAcumulador);
   
-  let MediaLong = SumaAcumuladaLong/TotalCiudades;
-  let MediaLat= SumaAcumuladaLat/TotalCiudades;
+  let MediaLong = SumaLongitud/TotalCiudades;
+  let MediaLat= SumaLatitud/TotalCiudades;
 
   return {
   lat : MediaLat,
