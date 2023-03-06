@@ -96,5 +96,21 @@ exports.min_latitud =(cities)=>{
 }
 
 exports.max_north = (cities) =>{
-   let LatitudMaxima = max_latitud(cities);
+ let CiudadMasNorte =cities[0];
+ cities.forEach((cities)=>{
+  let LatAux = cities.coord.lat;
+  if ( LatAux > CiudadMasNorte.coord.lat)
+  CiudadMasNorte= city;
+ });
+ return CiudadMasNorte;
 }
+
+exports.max_south = (cities) =>{
+  let CiudadMasSur =cities[0];
+  cities.forEach((cities)=>{
+   let LatAux = cities.coord.lat;
+   if ( LatAux < CiudadMasSur.coord.lat)
+   CiudadMasSur= city;
+  });
+  return CiudadMasSur;
+ }
