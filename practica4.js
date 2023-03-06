@@ -102,7 +102,7 @@ exports.max_north = (cities) =>{
   if ( LatAux > CiudadMasNorte.coord.lat)
   CiudadMasNorte= city;
  });
- return CiudadMasNorte;
+ return CiudadMasNorte.name;
 }
 
 exports.max_south = (cities) =>{
@@ -112,5 +112,6 @@ exports.max_south = (cities) =>{
    if ( LatAux < CiudadMasSur.coord.lat)
    CiudadMasSur= city;
   });
-  return CiudadMasSur;
+  return CiudadMasSur.name;
  }
+
