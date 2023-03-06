@@ -55,8 +55,8 @@ exports.average_temp = (cities) =>{
   let TotalCiudades = cities.length;
   let InicialAcumulador=0;
   let SumaTemperaturas =cities.reduce((SumaAcumulada, city) =>{
-    let temp_aux=cities.main.temp;
-    return SumaAcumulada =+ temp_aux;
+    let temp_aux=city.main.temp;
+    return SumaAcumulada + temp_aux;
   }, InicialAcumulador);
   return SumaTemperaturas/TotalCiudades;
 };
@@ -68,7 +68,8 @@ exports.warmer_average_temp =(cities) =>{
     let temp_aux=city.main.temp;
     return temp_aux > TemperaturaMedia;
   });
-   return TempMasCalientes;
+  let nombresCiudades = TempMasCalientes.map((city) => city.name);
+  return nombresCiudades.join(", ");
 };
 
 exports.max_latitud =(cities)=>{
