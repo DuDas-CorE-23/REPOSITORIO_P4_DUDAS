@@ -1,6 +1,6 @@
 //esto es la carpeta de trabajo de la P4.
 //author: Nerio Messino
-
+const {readFile} = require('fs/promises');
 
 exports.load = async filename => {
   const buf = await readFile(filename);
@@ -115,3 +115,29 @@ exports.max_south = (cities) =>{
   return CiudadMasSur.name;
  }
 
+exports.gravity_center = (cities) =>{
+  let TotalCiudades = cities.length;
+  let InicialAcumulador=0;
+  let SumaLongitud =cities.reduce((SumaAcumuladaLong, city) =>{
+    let longitud =cities.coord.lon;
+    return SumaAcumuladaLong =+ longitud ;
+  }, InicialAcumulador);
+  let SumaLatitud =cities.reduce((SumaAcumuladaLat, city) =>{
+    let latitud =cities.coord.lat;
+    return SumaAcumuladaLat =+ latitud ;
+  }, InicialAcumulador);
+  
+  let MediaLong = SumaAcumuladaLong/TotalCiudades;
+  let MediaLat= SumaAcumuladaLat/TotalCiudades;
+
+  return {
+  lat : MediaLat,
+  lon : MediaLong
+  };
+
+};
+
+exports.closets_GC=(cities)=>{
+
+
+}
