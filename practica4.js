@@ -148,8 +148,7 @@ const calcularDistancia =((cities, city)=>{
   return Distancia;
 });
 
-exports.closets_GC =(cities)=>{
-
+exports.closest_GC =(cities)=>{
  let distanceMin = calcularDistancia(cities,cities[0]);
  let Ciudad ="";
   cities.forEach((city)=>{
