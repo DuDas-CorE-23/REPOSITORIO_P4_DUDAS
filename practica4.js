@@ -3,18 +3,18 @@
 const {readFile} = require('fs/promises');
 
 exports.load = async filename => {
-  const buf = await readFile(filename);
-  return JSON.parse(buf);
+  const buffer = await readFile(filename);
+  return JSON.parse(bufeer);
 }
 
 exports.max_temp = (cities) =>{
   let temp_max =cities[0].main.temp;
-  cities.forEach((city) => {
-   let temp_aux=city.main.temp;
-   if(temp_aux > temp_max){
-     temp_max=temp_aux;
-   }
-  });
+  for (let i = 1; i < cities.length; i++){
+    const temper = cities[i].main.temp;
+    if(temper > maxTemp){
+        temp_max = temper;
+    }
+  }
    return temp_max;
 };
 
