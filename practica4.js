@@ -51,7 +51,7 @@ exports.min_temp_max = (cities) =>{
     return min_temp_max;
 };
 
-exports.average_temp = (cities) =>{
+const average_temp = exports.average_temp = (cities) =>{
   let TotalCiudades = cities.length;
   let InicialAcumulador=0;
   let SumaTemperaturas =cities.reduce((SumaAcumulada, city) =>{
@@ -69,13 +69,13 @@ exports.warmer_average_temp =(cities) =>{
     return temp_aux > TemperaturaMedia;
   });
   let nombresCiudades = TempMasCalientes.map((city) => city.name);
-  return nombresCiudades.join(", ");
+  return nombresCiudades;
 };
 
 exports.max_latitud =(cities)=>{
   let Latitud_max=cities[0].coord.lat;
   cities.forEach((city)=>{
-    let LatitudAuxiliar=cities.coord.lat
+    let LatitudAuxiliar=city.coord.lat
     if(LatitudAuxiliar>Latitud_max){
     Latitud_max=LatitudAuxiliar;
     }
@@ -86,7 +86,7 @@ exports.max_latitud =(cities)=>{
 exports.min_latitud =(cities)=>{
   let Latitud_min=cities[0].coord.lat;
   cities.forEach((city)=>{
-    let LatitudAuxiliar=cities.coord.lat
+    let LatitudAuxiliar=city.coord.lat
     if(LatitudAuxiliar<Latitud_min){
     Latitud_min=LatitudAuxiliar;
     }
@@ -96,8 +96,8 @@ exports.min_latitud =(cities)=>{
 
 exports.max_north = (cities) =>{
  let CiudadMasNorte =cities[0];
- cities.forEach((cities)=>{
-  let LatAux = cities.coord.lat;
+ cities.forEach((city)=>{
+  let LatAux = city.coord.lat;
   if ( LatAux > CiudadMasNorte.coord.lat)
   CiudadMasNorte= city;
  });
@@ -106,8 +106,8 @@ exports.max_north = (cities) =>{
 
 exports.max_south = (cities) =>{
   let CiudadMasSur =cities[0];
-  cities.forEach((cities)=>{
-   let LatAux = cities.coord.lat;
+  cities.forEach((city)=>{
+   let LatAux = city.coord.lat;
    if ( LatAux < CiudadMasSur.coord.lat)
    CiudadMasSur= city;
   });
@@ -118,12 +118,12 @@ exports.gravity_center = (cities) =>{
   let TotalCiudades = cities.length;
   let InicialAcumulador=0;
   let SumaLongitud =cities.reduce((SumaAcumuladaLong, city) =>{
-    let longitud =cities.coord.lon;
-    return SumaAcumuladaLong =+ longitud ;
+    let longitud =city.coord.lon;
+    return SumaAcumuladaLong + longitud ;
   }, InicialAcumulador);
   let SumaLatitud =cities.reduce((SumaAcumuladaLat, city) =>{
-    let latitud =cities.coord.lat;
-    return SumaAcumuladaLat =+ latitud ;
+    let latitud =city.coord.lat;
+    return SumaAcumuladaLat + latitud ;
   }, InicialAcumulador);
   
   let MediaLong = SumaLongitud/TotalCiudades;
