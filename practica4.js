@@ -114,7 +114,7 @@ exports.max_south = (cities) =>{
   return CiudadMasSur.name;
  }
 
-exports.gravity_center = (cities) =>{
+const gravity_center = exports.gravity_center = (cities) =>{
   let TotalCiudades = cities.length;
   let InicialAcumulador=0;
   let SumaLongitud =cities.reduce((SumaAcumuladaLong, city) =>{
@@ -136,7 +136,29 @@ exports.gravity_center = (cities) =>{
 
 };
 
-exports.closets_GC=(cities)=>{
+const calcularDistancia =((cities, city)=>{
+  let longitud =gravity_center(cities).lon;
+  let latitud =gravity_center(cities).lat;
+  let longitudAux = city.coord.lon;
+  let latitudAux = city.coord.lat;
+  let DiferenciaLong = longitud - longitudAux;
+  let DiferenciaLat = latitud - latitudAux;
 
+  let Distancia =Math.sqrt(Math.pow(DiferenciaLong, 2)+ Math.pow(DiferenciaLat, 2));
+  return Distancia;
+});
 
-}
+exports.closets_GC =(cities)=>{
+
+ let distanceMin = calcularDistancia(cities,cities[0]);
+ let Ciudad ="";
+  cities.forEach((city)=>{
+    let distanciaAux = calcularDistancia(cities, city);
+    if (distanciaAux < distanceMin){
+      distanceMin = distanciaAux;
+      Ciudad=city.name;
+    }
+  });
+  return Ciudad;
+
+};
