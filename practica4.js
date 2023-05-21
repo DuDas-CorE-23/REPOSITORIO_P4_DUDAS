@@ -4,7 +4,7 @@ const {readFile} = require('fs/promises');
 
 exports.load = async filename => {
   const buffer = await readFile(filename);
-  return JSON.parse(bufeer);
+  return JSON.parse(buffer);
 }
 
 exports.max_temp = (cities) =>{
